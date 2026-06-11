@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'auth.gates' => \App\Http\Middleware\AuthGates::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
